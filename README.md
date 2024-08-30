@@ -1,7 +1,7 @@
 # Palette
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/preset-color-picker.svg?style=flat-square)](https://packagist.org/packages/awcodes/preset-color-picker)
-[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/preset-color-picker.svg?style=flat-square)](https://packagist.org/packages/awcodes/preset-color-picker)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
+[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
 
 <img src="https://res.cloudinary.com/aw-codes/image/upload/v1725039348/plugins/palette/awcodes-palette.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
 
