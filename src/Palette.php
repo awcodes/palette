@@ -2,7 +2,6 @@
 
 namespace Awcodes\Palette;
 
-use Filament\Forms\Components\Component;
 use Illuminate\Support\Collection;
 
 class Palette

@@ -7,8 +7,8 @@ use Filament\Forms\Components\Field;
 
 class ColorPicker extends Field
 {
-    use Concerns\HasColors;
     use \Awcodes\Palette\Concerns\HasSize;
+    use Concerns\HasColors;
     use HasExtraInputAttributes;
 
     protected string $view = 'palette::forms.components.color-picker';
