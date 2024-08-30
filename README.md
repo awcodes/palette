@@ -3,9 +3,9 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/preset-color-picker.svg?style=flat-square)](https://packagist.org/packages/awcodes/preset-color-picker)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/preset-color-picker.svg?style=flat-square)](https://packagist.org/packages/awcodes/preset-color-picker)
 
-A color picker field for Filament Forms that uses preset color palettes.
+<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725039348/plugins/palette/awcodes-palette.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
 
-![Screenshot 2024-03-22 at 2 11 13 PM](https://github.com/awcodes/preset-color-picker/assets/3596800/e0c162db-6e21-4929-bbb5-f82f1a2e8f20)
+A color picker field for Filament Forms that uses preset color palettes.
 
 ## Installation
 
