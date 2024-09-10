@@ -26,6 +26,7 @@ class ColorPicker extends Field
 
                 if (is_array($state)) {
                     $component->state($state['key'] ?? null);
+
                     return;
                 }
 
