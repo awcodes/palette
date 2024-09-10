@@ -26,16 +26,21 @@ class ColorPicker extends Field
 
                 if (is_array($state)) {
                     $component->state($state['key'] ?? null);
+                    return;
                 }
 
                 $component->state($state);
             })
-            ->dehydrateStateUsing(function (ColorPicker $component, $state) {
+            ->dehydrateStateUsing(function (ColorPicker $component, string | array | null $state) {
                 if (! $state) {
                     return null;
                 }
 
-                return $component->getColors()[$state];
+                if (is_string($state)) {
+                    return $component->getColors()[$state];
+                }
+
+                return $state;
             });
     }
 }

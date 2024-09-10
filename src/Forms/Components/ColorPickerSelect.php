@@ -28,12 +28,21 @@ class ColorPickerSelect extends Select
 
                 if (is_array($state)) {
                     $component->state($state['key'] ?? null);
+                    return;
                 }
 
                 $component->state($state);
             })
-            ->dehydrateStateUsing(function (ColorPickerSelect $component, ?string $state) {
-                return $state ? $component->getColors()[$state] : null;
+            ->dehydrateStateUsing(function (ColorPickerSelect $component, string | array | null $state) {
+                if (! $state) {
+                    return null;
+                }
+
+                if (is_string($state)) {
+                    return $component->getColors()[$state];
+                }
+
+                return $state;
             });
     }
 
