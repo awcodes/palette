@@ -21,8 +21,16 @@ class ColorPickerSelect extends Select
         parent::setUp();
 
         $this
-            ->afterStateHydrated(function (ColorPickerSelect $component, ?array $state) {
-                $component->state($state['key'] ?? null);
+            ->afterStateHydrated(function (ColorPickerSelect $component, string | array | null $state) {
+                if (! $state) {
+                    return;
+                }
+
+                if (is_array($state)) {
+                    $component->state($state['key'] ?? null);
+                }
+
+                $component->state($state);
             })
             ->dehydrateStateUsing(function (ColorPickerSelect $component, ?string $state) {
                 return $state ? $component->getColors()[$state] : null;
