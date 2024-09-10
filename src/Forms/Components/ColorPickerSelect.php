@@ -28,6 +28,7 @@ class ColorPickerSelect extends Select
 
                 if (is_array($state)) {
                     $component->state($state['key'] ?? null);
+                    return;
                 }
 
                 $component->state($state);
