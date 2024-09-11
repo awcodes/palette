@@ -4,7 +4,6 @@ use Awcodes\Palette\Infolists\Components\ColorEntry;
 use Awcodes\Palette\Tests\Fixtures\TestEntryComponent;
 use Awcodes\Palette\Tests\Fixtures\TestInfolist;
 use Filament\Infolists\ComponentContainer;
-
 use function Pest\Livewire\livewire;
 
 it('sets the right size', function () {

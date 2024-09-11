@@ -1,8 +1,10 @@
 <?php
 
+use Awcodes\Palette\Facades\Palette;
 use Awcodes\Palette\Forms\Components\ColorPickerSelect;
 use Awcodes\Palette\Tests\Fixtures\TestForm;
 use Awcodes\Palette\Tests\Fixtures\TestSelectComponent;
+use Awcodes\Palette\Tests\Models\Page;
 use Filament\Forms\ComponentContainer;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
@@ -63,30 +65,54 @@ it('swaps white and black', function () {
 });
 
 it('can save correct data', function () {
+    $page = Page::factory()->make();
+
     livewire(TestSelectComponent::class)
         ->fillForm([
-            'color' => 'badass',
+            'title' => $page->title,
+            'slug' => $page->slug,
+            'select_color' => 'badass',
+            'select_color_as_key' => 'salmon',
         ])
         ->assertFormSet([
-            'color' => 'badass',
+            'select_color' => 'badass',
+            'select_color_as_key' => 'salmon',
         ])
         ->call('save')
         ->assertHasNoFormErrors()
-        ->assertSet('data.color', 'badass');
+        ->assertSet('data.select_color', 'badass')
+        ->assertSet('data.select_color_as_key', 'salmon');
+
+    $this->assertDatabaseHas(Page::class, [
+        'select_color' => json_encode(Palette::buildColor('badass', Color::hex('#bada55'), ['badass' => 300, 'danger' => 800])),
+        'select_color_as_key' => 'salmon',
+    ]);
 });
 
 it('can update correct data', function () {
+    $page = Page::factory()->create();
+
     livewire(TestSelectComponent::class)
         ->fillForm([
-            'color' => 'badass',
+            'title' => $page->title,
+            'slug' => $page->slug,
+            'select_color' => 'badass',
+            'select_color_as_key' => 'salmon',
         ])
         ->assertFormSet([
-            'color' => 'badass',
+            'select_color' => 'badass',
+            'select_color_as_key' => 'salmon',
         ])
         ->fillForm([
-            'color' => 'primary',
+            'select_color' => 'salmon',
+            'select_color_as_key' => 'badass',
         ])
-        ->call('save')
+        ->call('update')
         ->assertHasNoFormErrors()
-        ->assertSet('data.color', 'primary');
+        ->assertSet('data.select_color', 'salmon')
+        ->assertSet('data.select_color_as_key', 'badass');
+
+    expect($page->refresh())
+        ->select_color->toBe(Palette::buildColor('salmon', '#fa8072', []))
+        ->select_color_as_key->toBe('badass');
 });

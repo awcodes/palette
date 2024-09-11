@@ -8,6 +8,7 @@ use Filament\Forms\Components\Field;
 
 class ColorPicker extends Field
 {
+    use Concerns\CanStoreAsKey;
     use Concerns\HasColors;
     use HasExtraInputAttributes;
     use HasSize;
@@ -37,7 +38,7 @@ class ColorPicker extends Field
                     return null;
                 }
 
-                if (is_string($state)) {
+                if (is_string($state) && ! $this->shouldStoreAsKey()) {
                     return $component->getColors()[$state];
                 }
 

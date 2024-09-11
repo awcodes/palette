@@ -1,8 +1,10 @@
 <?php
 
+use Awcodes\Palette\Facades\Palette;
 use Awcodes\Palette\Forms\Components\ColorPicker;
 use Awcodes\Palette\Tests\Fixtures\TestComponent;
 use Awcodes\Palette\Tests\Fixtures\TestForm;
+use Awcodes\Palette\Tests\Models\Page;
 use Filament\Forms\ComponentContainer;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
@@ -79,30 +81,54 @@ it('can render the form component', function () {
 });
 
 it('can save correct data', function () {
+    $page = Page::factory()->make();
+
     livewire(TestComponent::class)
         ->fillForm([
+            'title' => $page->title,
+            'slug' => $page->slug,
             'color' => 'badass',
+            'color_as_key' => 'salmon',
         ])
         ->assertFormSet([
             'color' => 'badass',
+            'color_as_key' => 'salmon',
         ])
         ->call('save')
         ->assertHasNoFormErrors()
-        ->assertSet('data.color', 'badass');
+        ->assertSet('data.color', 'badass')
+        ->assertSet('data.color_as_key', 'salmon');
+
+    $this->assertDatabaseHas(Page::class, [
+        'color' => json_encode(Palette::buildColor('badass', Color::hex('#bada55'), [])),
+        'color_as_key' => 'salmon',
+    ]);
 });
 
 it('can update correct data', function () {
+    $page = Page::factory()->create();
+
     livewire(TestComponent::class)
         ->fillForm([
+            'title' => $page->title,
+            'slug' => $page->slug,
             'color' => 'badass',
+            'color_as_key' => 'salmon',
         ])
         ->assertFormSet([
             'color' => 'badass',
+            'color_as_key' => 'salmon',
         ])
         ->fillForm([
-            'color' => 'primary',
+            'color' => 'salmon',
+            'color_as_key' => 'badass',
         ])
-        ->call('save')
+        ->call('update')
         ->assertHasNoFormErrors()
-        ->assertSet('data.color', 'primary');
+        ->assertSet('data.color', 'salmon')
+        ->assertSet('data.color_as_key', 'badass');
+
+    expect($page->refresh())
+        ->color->toBe(Palette::buildColor('salmon', '#fa8072', []))
+        ->color_as_key->toBe('badass');
 });
