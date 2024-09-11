@@ -32,9 +32,17 @@ Rebuild your custom theme.
 npm run build
 ```
 
+## Config
+
+The plugin will work without publishing the config, but should you need to change any of the default settings you can publish the config file with the following Artisan command:
+
+```bash
+php artisan vendor:publish --tag="palette-config"
+```
+
 ## Preparing your model
 
-Palette will store the selected color in your db as an array of data. Because of this you must cast the column in your model as `array` or `json`.
+By default, Palette will store the selected color in your db as an array of data. Because of this you must cast the column in your model as `array` or `json`.
 
 ```php
 protected $casts = [
@@ -52,6 +60,18 @@ The stored content will take the following shape:
     'type' => 'rgb',
     'value' => '238, 246, 213',
 ]
+```
+
+### Storing the data as the color's key
+
+Should you prefer to store only the key for the color you can do so either by using the `storeAsKey()` modifier on the `ColorPicker` or `ColorPickerSelect` fields or globally via the `palette.php` config file.
+
+```php
+use Awcodes\Palette\Forms\Components\ColorPicker;
+use Filament\Support\Colors\Color;
+
+ColorPicker::make('color')
+    ->storeAsKey(),
 ```
 
 ## Color Picker Field

@@ -20,15 +20,6 @@ use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Awcodes\\Palette\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
-    }
-
     protected function getPackageProviders($app): array
     {
         return [
@@ -48,13 +39,13 @@ class TestCase extends Orchestra
         ];
     }
 
+    protected function defineDatabaseMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    }
+
     public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_palette_table.php.stub';
-        $migration->up();
-        */
     }
 }

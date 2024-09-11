@@ -2,6 +2,7 @@
 
 namespace Awcodes\Palette\Tests\Fixtures;
 
+use Awcodes\Palette\Tests\Models\Page;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -25,9 +26,20 @@ class TestForm extends Component implements HasActions, HasForms
         $this->form->fill();
     }
 
-    public function save(): array
+    public function save(): void
     {
-        return $this->form->getState();
+        $data = $this->form->getState();
+
+        Page::create($data);
+    }
+
+    public function update(): void
+    {
+        $data = $this->form->getState();
+
+        $page = Page::first();
+
+        $page->update($data);
     }
 
     public function render(): string

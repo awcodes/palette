@@ -37,19 +37,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Awcodes\\Palette\\": "src/",
-            "Awcodes\\Palette\\Database\\Factories\\": "database/factories/"
+            "Awcodes\\Palette\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Awcodes\\Palette\\Tests\\": "tests/"
+            "Awcodes\\Palette\\Tests\\": "tests/src",
+            "Awcodes\\Palette\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
+        "test-parallel": "vendor/bin/pest --parallel",
         "format": "vendor/bin/pint"
     },
     "config": {

@@ -2,6 +2,7 @@
 
 namespace Awcodes\Palette\Forms\Components;
 
+use Awcodes\Palette\Forms\Components\Concerns\CanStoreAsKey;
 use Awcodes\Palette\Forms\Components\Concerns\HasColors;
 use Closure;
 use Filament\Forms\Components\Select;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Blade;
 
 class ColorPickerSelect extends Select
 {
+    use CanStoreAsKey;
     use HasColors;
 
     protected bool | Closure $isHtmlAllowed = true;
@@ -39,7 +41,7 @@ class ColorPickerSelect extends Select
                     return null;
                 }
 
-                if (is_string($state)) {
+                if (is_string($state) && ! $this->shouldStoreAsKey()) {
                     return $component->getColors()[$state];
                 }
 
