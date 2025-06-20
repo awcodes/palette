@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Tests\Fixtures;
 
 use Awcodes\Palette\Infolists\Components\ColorEntry;
-use Filament\Infolists\Infolist;
+use Filament\Schemas\Schema;
 
 class TestEntryComponent extends TestInfolist
 {
-    public function infolist(Infolist $infolist): Infolist
+    public function infolist(Schema $infolist): Schema
     {
         return $infolist
             ->state([

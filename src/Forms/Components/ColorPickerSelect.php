@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Forms\Components;
 
 use Awcodes\Palette\Forms\Components\Concerns\CanStoreAsKey;
@@ -17,9 +19,9 @@ class ColorPickerSelect extends Select
     use CanStoreAsKey;
     use HasColors;
 
-    protected bool | Closure $isHtmlAllowed = true;
+    protected bool|Closure $isHtmlAllowed = true;
 
-    protected bool | Closure $isNative = false;
+    protected bool|Closure $isNative = false;
 
     /**
      * @throws JsonException
@@ -34,10 +36,10 @@ class ColorPickerSelect extends Select
         $this
             ->extraAttributes([
                 'x-data' => '',
-                'x-load-css' => '[' . $styles . ']',
+                'x-load-css' => '['.$styles.']',
             ])
-            ->afterStateHydrated(function (ColorPickerSelect $component, string | array | null $state) {
-                if (! $state) {
+            ->afterStateHydrated(function (ColorPickerSelect $component, string|array|null $state): void {
+                if ($state === '' || $state === '0' || $state === [] || $state === null) {
                     return;
                 }
 
@@ -49,8 +51,8 @@ class ColorPickerSelect extends Select
 
                 $component->state($state);
             })
-            ->dehydrateStateUsing(function (ColorPickerSelect $component, string | array | null $state) {
-                if (! $state) {
+            ->dehydrateStateUsing(function (ColorPickerSelect $component, string|array|null $state) {
+                if ($state === '' || $state === '0' || $state === [] || $state === null) {
                     return null;
                 }
 
@@ -64,12 +66,10 @@ class ColorPickerSelect extends Select
 
     public function getOptions(): array
     {
-        return collect($this->getColors())->sortBy('label')->mapWithKeys(function ($color) {
-            return [$color['key'] => $this->getOptionView($color)];
-        })->toArray();
+        return collect($this->getColors())->sortBy('label')->mapWithKeys(fn (array $color) => [$color['key'] => $this->getOptionView($color)])->toArray();
     }
 
-    public function getOptionView(array $color): string | Htmlable
+    public function getOptionView(array $color): string|Htmlable
     {
         return Blade::render('palette::forms.components.select-option', ['color' => $color]);
     }

@@ -1,11 +1,18 @@
-# Palette
+<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725039348/plugins/palette/awcodes-palette.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
 
-<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725039348/plugins/palette/awcodes-palette.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
+# Palette
 
 A color picker field for Filament Forms that uses preset color palettes.
+
+## Compatibility
+
+| Package Version | Filament Version |
+|-----------------|------------------|
+| 1.x             | 3.x              |
+| 2.x             | 4.x              |
 
 ## Installation
 
@@ -16,20 +23,12 @@ composer require awcodes/palette
 ```
 
 > [!IMPORTANT]
-> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) first. The following applies to both the Panels Package and the standalone Forms package.
+> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first.
 
-Add the plugin's views to your `tailwind.config.js` file.
+After setting up a custom theme add the plugin's views to your theme css file or your app's css file if using the standalone packages.
 
-```js
-content: [
-    './vendor/awcodes/palette/resources/views/**/*.blade.php',
-]
-```
-
-Rebuild your custom theme.
-
-```sh
-npm run build
+```css
+@source '../../../../vendor/awcodes/palette/resources/**/*.blade.php';
 ```
 
 ## Config
@@ -80,7 +79,8 @@ Simply add the field to your form using the `ColorPicker` field and pass in an a
 
 Should you need to include black and white in your color palette, you can use the `withWhite` and `withBlack` methods. This will include black and white at the end of the color options. You can also use the 'swap' argument to swap out the hex value used for black and white.
 
-***Note: Shades only work with Filament Color objects*** 
+> [!NOTE]
+> Shades only work with Filament Color objects
 
 ```php
 use Awcodes\Palette\Forms\Components\ColorPicker;
@@ -110,7 +110,8 @@ Simply add the field to your form using the `ColorPickerSelect` field and pass i
 
 Should you need to include black and white in your color palette, you can use the `withWhite` and `withBlack` methods. This will include black and white at the end of the color options. You can also use the 'swap' argument to swap out the hex value used for black and white.
 
-***Note: Shades only work with Filament Color objects***
+> [!NOTE]
+> Shades only work with Filament Color objects
 
 ```php
 use Awcodes\Palette\Forms\Components\ColorPickerSelect;
@@ -162,17 +163,13 @@ Available classes for css customizations on the ColorEntry:
 composer test
 ```
 
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please review [our security policy](.github/SECURITY.md) on how to report security vulnerabilities.
 
 ## Credits
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace Awcodes\Palette\Tests\Models;
+declare(strict_types=1);
+
+namespace Awcodes\Palette\Tests\Fixtures\Models;
 
 use Awcodes\Palette\Tests\Database\Factories\PageFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,15 +12,15 @@ class Page extends Model
 {
     use HasFactory;
 
-    protected static function newFactory(): PageFactory
-    {
-        return new PageFactory;
-    }
-
     protected $guarded = [];
 
     protected $casts = [
         'color' => 'array',
         'select_color' => 'array',
     ];
+
+    protected static function newFactory(): PageFactory
+    {
+        return new PageFactory;
+    }
 }

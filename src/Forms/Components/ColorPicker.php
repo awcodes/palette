@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Forms\Components;
 
 use Awcodes\Palette\Concerns\HasSize;
@@ -20,8 +22,8 @@ class ColorPicker extends Field
         parent::setUp();
 
         $this
-            ->afterStateHydrated(function (ColorPicker $component, string | array | null $state) {
-                if (! $state) {
+            ->afterStateHydrated(function (ColorPicker $component, string|array|null $state): void {
+                if ($state === '' || $state === '0' || $state === [] || $state === null) {
                     return;
                 }
 
@@ -33,8 +35,8 @@ class ColorPicker extends Field
 
                 $component->state($state);
             })
-            ->dehydrateStateUsing(function (ColorPicker $component, string | array | null $state) {
-                if (! $state) {
+            ->dehydrateStateUsing(function (ColorPicker $component, string|array|null $state) {
+                if ($state === '' || $state === '0' || $state === [] || $state === null) {
                     return null;
                 }
 

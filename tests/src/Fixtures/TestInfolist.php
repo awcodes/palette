@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Tests\Fixtures;
 
 use Filament\Forms\Concerns\InteractsWithForms;

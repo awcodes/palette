@@ -1,18 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Tests\Fixtures;
 
-use Awcodes\Palette\Tests\Models\Page;
-use Filament\Actions\Concerns\InteractsWithActions;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
+use Awcodes\Palette\Tests\Fixtures\Models\Page;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Filament\Schemas\Contracts\HasSchemas;
 use Livewire\Component;
 
-class TestForm extends Component implements HasActions, HasForms
+class TestForm extends Component implements HasSchemas
 {
-    use InteractsWithActions;
-    use InteractsWithForms;
+    use InteractsWithSchemas;
 
     public ?array $data = [];
 

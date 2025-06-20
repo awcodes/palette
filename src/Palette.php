@@ -1,19 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette;
 
 use Illuminate\Support\Collection;
 
 class Palette
 {
-    public function processColors(array $colors, ?array $shades = [], ?array $labels = []): array | Collection
+    public function processColors(array $colors, ?array $shades = [], ?array $labels = []): array|Collection
     {
-        return collect($colors)->mapWithKeys(function ($color, $key) use ($shades, $labels) {
-            return [$key => $this->buildColor($key, $color, $shades, $labels)];
-        });
+        return collect($colors)->mapWithKeys(fn ($color, $key) => [$key => $this->buildColor($key, $color, $shades, $labels)]);
     }
 
-    public function buildColor(string $key, array | string $color, array $shades, array $labels): array
+    public function buildColor(string $key, array|string $color, array $shades, array $labels): array
     {
         if (is_array($color)) {
             $value = isset($shades[$key]) ? $color[$shades[$key]] : $color[500];
@@ -28,7 +28,7 @@ class Palette
 
         return [
             'key' => $key,
-            'property' => '--' . $key . ($shade ? '-' . $shade : ''),
+            'property' => '--'.$key.($shade ? '-'.$shade : ''),
             'label' => $label,
             'type' => $type,
             'value' => $value,
@@ -39,8 +39,14 @@ class Palette
     {
         if (preg_match('/^#?[a-fA-F0-9]{6}$/', $value) === 1) {
             return 'hex';
-        } elseif (preg_match("/(\d{1,3},\s\d{1,3},\s\d{1,3})/", $value) === 1) {
+        }
+
+        if (preg_match("/(\d{1,3},\s\d{1,3},\s\d{1,3})/", $value) === 1) {
             return 'rgb';
+        }
+
+        if (str_starts_with($value, 'oklch')) {
+            return 'oklch';
         }
 
         return 'class';

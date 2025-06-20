@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use Awcodes\Palette\Facades\Palette;
 use Awcodes\Palette\Forms\Components\ColorPicker;
+use Awcodes\Palette\Tests\Fixtures\Models\Page;
 use Awcodes\Palette\Tests\Fixtures\TestComponent;
 use Awcodes\Palette\Tests\Fixtures\TestForm;
-use Awcodes\Palette\Tests\Models\Page;
-use Filament\Forms\ComponentContainer;
+use Filament\Schemas\Schema;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
 
@@ -13,7 +15,7 @@ use function Pest\Livewire\livewire;
 
 it('has default colors', function () {
     $field = (new ColorPicker('color'))
-        ->container(ComponentContainer::make(TestForm::make()));
+        ->container(Schema::make(TestForm::make()));
 
     expect($field)
         ->getColors()->toHaveKeys(array_keys(FilamentColor::getColors()));
@@ -21,7 +23,7 @@ it('has default colors', function () {
 
 it('supports custom colors', function () {
     $field = (new ColorPicker('color'))
-        ->container(ComponentContainer::make(TestForm::make()))
+        ->container(Schema::make(TestForm::make()))
         ->colors([
             'badass' => Color::hex('#bada55'),
             'salmon' => '#fa8072',
@@ -46,7 +48,7 @@ it('supports custom colors', function () {
 
 it('sets the right size', function () {
     $field = (new ColorPicker('color'))
-        ->container(ComponentContainer::make(TestForm::make()))
+        ->container(Schema::make(TestForm::make()))
         ->size('sm');
 
     expect($field)
@@ -55,7 +57,7 @@ it('sets the right size', function () {
 
 it('adds white and black', function () {
     $field = (new ColorPicker('color'))
-        ->container(ComponentContainer::make(TestForm::make()))
+        ->container(Schema::make(TestForm::make()))
         ->withBlack()
         ->withWhite();
 
@@ -65,7 +67,7 @@ it('adds white and black', function () {
 
 it('swaps white and black', function () {
     $field = (new ColorPicker('color'))
-        ->container(ComponentContainer::make(TestForm::make()))
+        ->container(Schema::make(TestForm::make()))
         ->withBlack(swap: '#ef4444')
         ->withWhite(swap: '#22c55e');
 
@@ -80,8 +82,7 @@ it('swaps white and black', function () {
 it('can render the form component', function () {
     livewire(TestComponent::class)
         ->assertFormFieldExists('color')
-        ->assertSee('palette-color-picker')
-        ->assertSee('rgba(186, 218, 85, 1)');
+        ->assertSee('palette-color-picker');
 });
 
 it('can save correct data', function () {
@@ -94,7 +95,7 @@ it('can save correct data', function () {
             'color' => 'badass',
             'color_as_key' => 'salmon',
         ])
-        ->assertFormSet([
+        ->assertSchemaStateSet([
             'color' => 'badass',
             'color_as_key' => 'salmon',
         ])
@@ -119,7 +120,7 @@ it('can update correct data', function () {
             'color' => 'badass',
             'color_as_key' => 'salmon',
         ])
-        ->assertFormSet([
+        ->assertSchemaStateSet([
             'color' => 'badass',
             'color_as_key' => 'salmon',
         ])

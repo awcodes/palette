@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Concerns;
 
 use Closure;
@@ -7,9 +9,9 @@ use Exception;
 
 trait HasSize
 {
-    protected string | Closure | null $size = null;
+    protected string|Closure|null $size = null;
 
-    public function size(string | Closure $size): static
+    public function size(string|Closure $size): static
     {
         $this->size = $size;
 

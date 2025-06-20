@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace Awcodes\Palette;
@@ -32,7 +34,7 @@ class PaletteServiceProvider extends PackageServiceProvider
         FilamentAsset::register([
             Css::make(
                 id: 'palette-select-styles',
-                path: __DIR__ . '/../resources/dist/palette-select-styles.css'
+                path: __DIR__.'/../resources/dist/palette-select-styles.css'
             )->loadedOnRequest(),
         ], 'awcodes/palette');
 

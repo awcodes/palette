@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 use Awcodes\Palette\Infolists\Components\ColorEntry;
 use Awcodes\Palette\Tests\Fixtures\TestEntryComponent;
 use Awcodes\Palette\Tests\Fixtures\TestInfolist;
-use Filament\Infolists\ComponentContainer;
+use Filament\Schemas\Schema;
 
 use function Pest\Livewire\livewire;
 
 it('sets the right size', function () {
     $field = (new ColorEntry('color'))
-        ->container(ComponentContainer::make(TestInfolist::make()))
+        ->container(Schema::make(TestInfolist::make()))
         ->size('sm');
 
     expect($field)
@@ -18,7 +20,7 @@ it('sets the right size', function () {
 
 it('only excepts specific sizes', function () {
     $field = (new ColorEntry('color'))
-        ->container(ComponentContainer::make(TestInfolist::make()))
+        ->container(Schema::make(TestInfolist::make()))
         ->size('2xl');
 
     $field->getSize();

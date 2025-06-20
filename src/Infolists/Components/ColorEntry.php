@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Infolists\Components;
 
 use Awcodes\Palette\Concerns\HasSize;

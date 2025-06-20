@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Palette\Tests\Database\Factories;
 
-use Awcodes\Palette\Tests\Models\Page;
+use Awcodes\Palette\Tests\Fixtures\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PageFactory extends Factory
