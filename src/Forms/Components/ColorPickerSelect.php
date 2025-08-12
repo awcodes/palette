@@ -11,7 +11,6 @@ use Exception;
 use Filament\Forms\Components\Select;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Js;
 use JsonException;
 
 class ColorPickerSelect extends Select
@@ -31,13 +30,8 @@ class ColorPickerSelect extends Select
     {
         parent::setUp();
 
-        $styles = Js::from(\Filament\Support\Facades\FilamentAsset::getStyleHref('palette-select-styles', 'awcodes/palette'));
-
         $this
-            ->extraAttributes([
-                'x-data' => '',
-                'x-load-css' => '['.$styles.']',
-            ])
+            ->options($this->getOptions())
             ->afterStateHydrated(function (ColorPickerSelect $component, string|array|null $state): void {
                 if ($state === '' || $state === '0' || $state === [] || $state === null) {
                     return;
@@ -66,7 +60,10 @@ class ColorPickerSelect extends Select
 
     public function getOptions(): array
     {
-        return collect($this->getColors())->sortBy('label')->mapWithKeys(fn (array $color) => [$color['key'] => $this->getOptionView($color)])->toArray();
+        return collect($this->getColors())
+            ->sortBy('label')
+            ->mapWithKeys(fn (array $color) => [$color['key'] => $this->getOptionView($color)])
+            ->toArray();
     }
 
     public function getOptionView(array $color): string|Htmlable
