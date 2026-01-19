@@ -23,7 +23,7 @@ class ColorPicker extends Field
 
         $this
             ->afterStateHydrated(function (ColorPicker $component, string|array|null $state): void {
-                if ($state === '' || $state === '0' || $state === [] || $state === null) {
+                if (in_array($state, ['', '0', [], null], true)) {
                     return;
                 }
 
@@ -36,7 +36,7 @@ class ColorPicker extends Field
                 $component->state($state);
             })
             ->dehydrateStateUsing(function (ColorPicker $component, string|array|null $state) {
-                if ($state === '' || $state === '0' || $state === [] || $state === null) {
+                if (in_array($state, ['', '0', [], null], true)) {
                     return null;
                 }
 

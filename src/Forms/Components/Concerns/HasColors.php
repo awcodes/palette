@@ -83,7 +83,7 @@ trait HasColors
 
     public function getShades(): array
     {
-        return $this->evaluate($this->shades) ?? collect(FilamentColor::getColors())->mapWithKeys(fn ($color, $key) => [$key => 500])->toArray();
+        return $this->evaluate($this->shades) ?? collect(FilamentColor::getColors())->mapWithKeys(fn ($color, $key): array => [$key => 500])->toArray();
     }
 
     public function getLabels(): array

@@ -10,7 +10,7 @@ class Palette
 {
     public function processColors(array $colors, ?array $shades = [], ?array $labels = []): array|Collection
     {
-        return collect($colors)->mapWithKeys(fn ($color, $key) => [$key => $this->buildColor($key, $color, $shades, $labels)]);
+        return collect($colors)->mapWithKeys(fn (array|string $color, string $key): array => [$key => $this->buildColor($key, $color, $shades, $labels)]);
     }
 
     public function buildColor(string $key, array|string $color, array $shades, array $labels): array

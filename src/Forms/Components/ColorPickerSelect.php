@@ -33,7 +33,7 @@ class ColorPickerSelect extends Select
         $this
             ->options($this->getOptions())
             ->afterStateHydrated(function (ColorPickerSelect $component, string|array|null $state): void {
-                if ($state === '' || $state === '0' || $state === [] || $state === null) {
+                if (in_array($state, ['', '0', [], null], true)) {
                     return;
                 }
 
@@ -46,7 +46,7 @@ class ColorPickerSelect extends Select
                 $component->state($state);
             })
             ->dehydrateStateUsing(function (ColorPickerSelect $component, string|array|null $state) {
-                if ($state === '' || $state === '0' || $state === [] || $state === null) {
+                if (in_array($state, ['', '0', [], null], true)) {
                     return null;
                 }
 
@@ -62,7 +62,7 @@ class ColorPickerSelect extends Select
     {
         return collect($this->getColors())
             ->sortBy('label')
-            ->mapWithKeys(fn (array $color) => [$color['key'] => $this->getOptionView($color)])
+            ->mapWithKeys(fn (array $color): array => [$color['key'] => $this->getOptionView($color)])
             ->toArray();
     }
 
