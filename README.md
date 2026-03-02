@@ -2,10 +2,10 @@
 
 A color picker field for Filament Forms that uses preset color palettes.
 
-[![Latest Version](https://img.shields.io/github/release/awcodes/palette.svg?style=flat-square)](https://github.com/awcodes/palette/releases)
-[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
-![GitHub Repo stars](https://img.shields.io/github/stars/awcodes/palette?style=flat-square)
+[![Latest Version](https://img.shields.io/github/release/awcodes/palette.svg?style=flat-square&color=blue&label=Release)](https://github.com/awcodes/palette/releases)
+[![MIT Licensed](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/palette.svg?style=flat-square&color=blue&label=Downloads)](https://packagist.org/packages/awcodes/palette)
+[![GitHub Repo stars](https://img.shields.io/github/stars/awcodes/palette?style=flat-square&color=blue&label=Stars)](https://github.com/awcodes/palette/stargazers)
 
 ## Compatibility
 
