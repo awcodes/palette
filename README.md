@@ -1,11 +1,11 @@
-<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725039348/plugins/palette/awcodes-palette.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
-[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
-
 # Palette
 
 A color picker field for Filament Forms that uses preset color palettes.
+
+[![Latest Version](https://img.shields.io/github/release/awcodes/palette.svg?style=flat-square)](https://github.com/awcodes/palette/releases)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/palette.svg?style=flat-square)](https://packagist.org/packages/awcodes/palette)
+![GitHub Repo stars](https://img.shields.io/github/stars/awcodes/palette?style=flat-square)
 
 ## Compatibility
 
