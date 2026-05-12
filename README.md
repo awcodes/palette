@@ -15,6 +15,8 @@ A color picker field for Filament Forms that uses preset color palettes.
 | 2.x             | 4.x              |
 | 3.x             | 5.x              |
 
+<!-- [docs_start] -->
+
 ## Installation
 
 You can install the package via composer:
@@ -157,6 +159,8 @@ Available classes for css customizations on the ColorPicker:
 Available classes for css customizations on the ColorEntry:
 
 - for the main container: `palette-entry-item`
+
+<!-- [docs_end] -->
 
 ## Testing
 
