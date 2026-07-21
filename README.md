@@ -13,7 +13,7 @@ A color picker field for Filament Forms that uses preset color palettes.
 |-----------------|------------------|
 | 1.x             | 3.x              |
 | 2.x             | 4.x              |
-| 3.x             | 5.x              |
+| 3.x             | 4.x & 5.x        |
 
 <!-- [docs_start] -->
 
