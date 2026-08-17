@@ -3,8 +3,9 @@
     :entry="$entry"
 >
     @php
-        $color = $getState();
+        $color = $getColor();
     @endphp
+    @if (filled($color))
     <div
         x-data
         x-tooltip="{
@@ -38,4 +39,5 @@
             <span class="sr-only">{{ $color['label'] }}</span>
         </div>
     </div>
+    @endif
 </x-dynamic-component>

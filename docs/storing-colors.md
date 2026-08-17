@@ -65,12 +65,30 @@ return [
 ];
 ```
 
-> [!NOTE]
-> The field-level modifier can only turn this behaviour on, not off. `shouldStoreAsKey()` returns `true` if the field opts in, and otherwise falls back to the config value — so when `store_as_key` is `true` globally, passing `storeAsKey(false)` on an individual field will not switch it back to storing the full array.
+The field-level modifier always wins over the config. With `store_as_key` enabled globally, an individual field can still opt out and store the full array:
+
+```php
+ColorPicker::make('color')
+    ->storeAsKey(false),
+```
+
+A field that never calls `storeAsKey()` follows the config value.
 
 ## Reading a stored color
 
-> [!WARNING]
-> `ColorEntry` requires the full array shape. It reads `label`, `value` and `type` off the stored state directly, so pointing it at a column written with `storeAsKey()` will fail rather than render a swatch.
+`ColorEntry` handles both shapes. Given a full array it renders it directly. Given a key, it resolves that key against its own colors — so pass the entry the same palette you gave the field:
 
-If you store keys and still want a swatch in an infolist, resolve the key back to a color yourself — look it up in the same palette you passed to the field — and render it, or keep the full array for records that need to be displayed this way. See [Components](components.md).
+```php
+use Awcodes\Palette\Infolists\Components\ColorEntry;
+use Filament\Support\Colors\Color;
+
+ColorEntry::make('color')
+    ->colors([
+        'badass' => Color::hex('#bada55'),
+    ])
+    ->shades([
+        'badass' => 300,
+    ]),
+```
+
+Without a matching entry in `colors()` there is nothing to resolve the key to, so the entry renders nothing rather than a broken swatch. The same applies when the column is empty. See [Components](components.md).
