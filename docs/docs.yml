@@ -1,0 +1,10 @@
+version: 1
+
+title: Palette
+
+navigation:
+  - index
+  - installation
+  - components
+  - storing-colors
+  - styling
