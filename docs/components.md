@@ -74,6 +74,8 @@ ColorEntry::make('color')
     ->size('sm'),
 ```
 
+`ColorEntry` also accepts `colors()`, `shades()` and `labels()`. It only needs them when the column was written with `storeAsKey()` — then the state is just a key, and the entry resolves it against these colors. See [Storing colors](storing-colors.md).
+
 ## Defining colors
 
 ### colors()

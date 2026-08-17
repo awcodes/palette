@@ -137,3 +137,32 @@ it('can update correct data', function () {
         ->color->toBe(Palette::buildColor('salmon', '#fa8072', [], []))
         ->color_as_key->toBe('badass');
 });
+
+it('falls back to the config when storeAsKey() is not set', function () {
+    config()->set('palette.store_as_key', true);
+
+    $field = (new ColorPicker('color'))
+        ->container(Schema::make(TestForm::make()));
+
+    expect($field->shouldStoreAsKey())->toBeTrue();
+});
+
+it('lets storeAsKey(false) override a true config value', function () {
+    config()->set('palette.store_as_key', true);
+
+    $field = (new ColorPicker('color'))
+        ->container(Schema::make(TestForm::make()))
+        ->storeAsKey(false);
+
+    expect($field->shouldStoreAsKey())->toBeFalse();
+});
+
+it('lets storeAsKey() opt in when the config is false', function () {
+    config()->set('palette.store_as_key', false);
+
+    $field = (new ColorPicker('color'))
+        ->container(Schema::make(TestForm::make()))
+        ->storeAsKey();
+
+    expect($field->shouldStoreAsKey())->toBeTrue();
+});

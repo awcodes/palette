@@ -19,8 +19,10 @@ trait CanStoreAsKey
 
     public function shouldStoreAsKey(): bool
     {
-        if ($this->evaluate($this->storeAsKey)) {
-            return true;
+        $storeAsKey = $this->evaluate($this->storeAsKey);
+
+        if ($storeAsKey !== null) {
+            return (bool) $storeAsKey;
         }
 
         return (bool) config('palette.store_as_key', false);
