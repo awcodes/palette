@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\Palette\Tests\Fixtures\Models;
+namespace Workbench\App\Models;
 
-use Awcodes\Palette\Tests\Database\Factories\PageFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Workbench\Database\Factories\PageFactory;
 
 class Page extends Model
 {

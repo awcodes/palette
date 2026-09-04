@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 use Awcodes\Palette\Facades\Palette;
 use Awcodes\Palette\Forms\Components\ColorPickerSelect;
-use Awcodes\Palette\Tests\Fixtures\Models\Page;
 use Awcodes\Palette\Tests\Fixtures\TestForm;
 use Awcodes\Palette\Tests\Fixtures\TestSelectComponent;
 use Filament\Schemas\Schema;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
+use Workbench\App\Models\Page;
 
 use function Pest\Livewire\livewire;
 

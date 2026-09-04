@@ -44,11 +44,13 @@
     "autoload-dev": {
         "psr-4": {
             "Awcodes\\Palette\\Tests\\": "tests/src",
-            "Awcodes\\Palette\\Tests\\Database\\Factories\\": "tests/database/factories"
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "scripts": {
-        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "post-autoload-dump": ["@clear", "@prepare"],
         "lint": "pint",
         "refactor": "rector",
         "test:lint": "pint --test",
@@ -58,6 +60,18 @@
             "@test:refactor",
             "@test:lint",
             "@test:unit"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": [
+            "@php vendor/bin/testbench workbench:build --ansi",
+            "npm ci --no-audit --no-fund",
+            "npm run build"
+        ],
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
         ]
     },
     "extra": {

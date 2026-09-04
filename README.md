@@ -168,6 +168,17 @@ Available classes for css customizations on the ColorEntry:
 composer test
 ```
 
+## Development
+
+Install dependencies with `composer install`, run the test suite with `composer test`,
+and start the development Workbench with:
+
+```bash
+composer serve
+```
+
+The Filament Workbench is available at `/admin` with `test@example.com` / `password`.
+
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.

@@ -12,14 +12,12 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-
             $table->string('title');
             $table->string('slug');
             $table->text('color')->nullable();
             $table->text('select_color')->nullable();
             $table->text('color_as_key')->nullable();
             $table->text('select_color_as_key')->nullable();
-
             $table->timestamps();
         });
     }
