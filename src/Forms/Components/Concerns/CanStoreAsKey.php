@@ -8,9 +8,9 @@ use Closure;
 
 trait CanStoreAsKey
 {
-    protected bool|Closure|null $storeAsKey = null;
+    protected bool | Closure | null $storeAsKey = null;
 
-    public function storeAsKey(bool|Closure|null $condition = true): static
+    public function storeAsKey(bool | Closure | null $condition = true): static
     {
         $this->storeAsKey = $condition;
 

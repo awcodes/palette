@@ -18,9 +18,9 @@ class ColorPickerSelect extends Select
     use CanStoreAsKey;
     use HasColors;
 
-    protected bool|Closure $isHtmlAllowed = true;
+    protected bool | Closure $isHtmlAllowed = true;
 
-    protected bool|Closure $isNative = false;
+    protected bool | Closure $isNative = false;
 
     /**
      * @throws JsonException
@@ -32,7 +32,7 @@ class ColorPickerSelect extends Select
 
         $this
             ->options($this->getOptions())
-            ->afterStateHydrated(function (ColorPickerSelect $component, string|array|null $state): void {
+            ->afterStateHydrated(function (ColorPickerSelect $component, string | array | null $state): void {
                 if (in_array($state, ['', '0', [], null], true)) {
                     return;
                 }
@@ -45,7 +45,7 @@ class ColorPickerSelect extends Select
 
                 $component->state($state);
             })
-            ->dehydrateStateUsing(function (ColorPickerSelect $component, string|array|null $state) {
+            ->dehydrateStateUsing(function (ColorPickerSelect $component, string | array | null $state) {
                 if (in_array($state, ['', '0', [], null], true)) {
                     return null;
                 }
@@ -66,7 +66,7 @@ class ColorPickerSelect extends Select
             ->toArray();
     }
 
-    public function getOptionView(array $color): string|Htmlable
+    public function getOptionView(array $color): string | Htmlable
     {
         return Blade::render('palette::forms.components.select-option', ['color' => $color]);
     }

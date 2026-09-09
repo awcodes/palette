@@ -24,26 +24,26 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSwatch;
+    protected static string | BackedEnum | null $navigationIcon = Heroicon::OutlinedSwatch;
 
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
             TextInput::make('title')->required(),
-            ColorPicker::make('color')->colors(static::colors()),
-            ColorPickerSelect::make('select_color')->colors(static::colors()),
-            ColorPicker::make('color_as_key')->colors(static::colors())->storeAsKey(),
-            ColorPickerSelect::make('select_color_as_key')->colors(static::colors())->storeAsKey(),
+            ColorPicker::make('color')->colors(self::colors()),
+            ColorPickerSelect::make('select_color')->colors(self::colors()),
+            ColorPicker::make('color_as_key')->colors(self::colors())->storeAsKey(),
+            ColorPickerSelect::make('select_color_as_key')->colors(self::colors())->storeAsKey(),
         ]);
     }
 
     public static function infolist(Schema $schema): Schema
     {
         return $schema->components([
-            ColorEntry::make('color')->colors(static::colors()),
-            ColorEntry::make('select_color')->colors(static::colors()),
-            ColorEntry::make('color_as_key')->colors(static::colors()),
-            ColorEntry::make('select_color_as_key')->colors(static::colors()),
+            ColorEntry::make('color')->colors(self::colors()),
+            ColorEntry::make('select_color')->colors(self::colors()),
+            ColorEntry::make('color_as_key')->colors(self::colors()),
+            ColorEntry::make('select_color_as_key')->colors(self::colors()),
         ]);
     }
 

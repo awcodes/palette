@@ -8,12 +8,12 @@ use Illuminate\Support\Collection;
 
 class Palette
 {
-    public function processColors(array $colors, ?array $shades = [], ?array $labels = []): array|Collection
+    public function processColors(array $colors, ?array $shades = [], ?array $labels = []): array | Collection
     {
-        return collect($colors)->mapWithKeys(fn (array|string $color, string $key): array => [$key => $this->buildColor($key, $color, $shades, $labels)]);
+        return collect($colors)->mapWithKeys(fn (array | string $color, string $key): array => [$key => $this->buildColor($key, $color, $shades, $labels)]);
     }
 
-    public function buildColor(string $key, array|string $color, array $shades, array $labels): array
+    public function buildColor(string $key, array | string $color, array $shades, array $labels): array
     {
         if (is_array($color)) {
             $value = isset($shades[$key]) ? $color[$shades[$key]] : $color[500];

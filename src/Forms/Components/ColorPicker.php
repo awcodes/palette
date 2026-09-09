@@ -22,7 +22,7 @@ class ColorPicker extends Field
         parent::setUp();
 
         $this
-            ->afterStateHydrated(function (ColorPicker $component, string|array|null $state): void {
+            ->afterStateHydrated(function (ColorPicker $component, string | array | null $state): void {
                 if (in_array($state, ['', '0', [], null], true)) {
                     return;
                 }
@@ -35,7 +35,7 @@ class ColorPicker extends Field
 
                 $component->state($state);
             })
-            ->dehydrateStateUsing(function (ColorPicker $component, string|array|null $state) {
+            ->dehydrateStateUsing(function (ColorPicker $component, string | array | null $state) {
                 if (in_array($state, ['', '0', [], null], true)) {
                     return null;
                 }
