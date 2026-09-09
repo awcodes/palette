@@ -9,6 +9,7 @@ try {
         ->withPaths([
             __DIR__.'/src',
             __DIR__.'/workbench',
+            __DIR__.'/config',
         ])
         ->withSkip([
             __DIR__.'/workbench/storage',
