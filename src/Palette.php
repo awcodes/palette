@@ -28,7 +28,7 @@ class Palette
 
         return [
             'key' => $key,
-            'property' => '--'.$key.($shade ? '-'.$shade : ''),
+            'property' => '--' . $key . ($shade ? '-' . $shade : ''),
             'label' => $label,
             'type' => $type,
             'value' => $value,
