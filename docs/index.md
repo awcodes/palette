@@ -19,14 +19,6 @@ Palette ships three components:
 
 All three read the same color definitions and understand the same stored format.
 
-## Compatibility
-
-| Package version | Filament version |
-|---|---|
-| 1.x | 3.x |
-| 2.x | 4.x |
-| 3.x | 4.x and 5.x |
-
 ## Where to go next
 
 - [Installation](installation.md) — install the package and register its views with your theme.

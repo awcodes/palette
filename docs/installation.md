@@ -5,6 +5,16 @@ description: Install Palette, register its views with your Filament theme, and p
 
 # Installation
 
+## Compatibility
+
+| Filament version | Package version |
+|------------------|-----------------|
+| 3.x              | 1.x             |
+| 4.x              | 2.x             |
+| 4.x & 5.x        | 3.x             |
+
+Palette requires PHP 8.2 or later and `filament/filament`.
+
 ## Install the package
 
 Install Palette via Composer:
