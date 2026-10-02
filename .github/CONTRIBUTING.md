@@ -36,11 +36,40 @@ Before submitting a pull request:
 - Check the codebase to ensure that your feature doesn't already exist.
 - Check the pull requests to ensure that another person hasn't already submitted the feature or fix.
 
+## Development
+
+Install the dependencies with `composer install`, then start the development Workbench. It installs the npm dependencies, builds the assets, seeds a SQLite database and serves a Filament panel:
+
+```bash
+composer serve
+```
+
+The Workbench is available at `/admin`. Log in with `test@example.com` / `password`.
+
+## Testing
+
+Run the full suite, which covers Rector, Pint, PHPStan and Pest:
+
+```bash
+composer test
+```
+
+Each check can also be run on its own:
+
+```bash
+composer test:refactor   # Rector (dry run)
+composer test:lint       # Pint (check only)
+composer test:types      # PHPStan
+composer test:unit       # Pest
+```
+
+To apply fixes, run `composer lint` (Pint) and `composer refactor` (Rector).
+
 ## Requirements
 
 If the project maintainer has any additional requirements, you will find them listed here.
 
-- **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](https://pear.php.net/package/PHP_CodeSniffer).
+- **Code style** - The project uses [Laravel Pint](https://laravel.com/docs/pint) with the rules in `pint.json`. Run `composer lint` before submitting.
 
 - **Add tests!** - Your patch won't be accepted if it doesn't have tests.
 
