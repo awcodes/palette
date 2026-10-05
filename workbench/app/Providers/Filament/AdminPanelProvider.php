@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Workbench\App\Filament\Pages\Auth\Login;
+use Workbench\App\Filament\Pages\PaletteSizes;
 use Workbench\App\Filament\Resources\Pages\PageResource;
 
 class AdminPanelProvider extends PanelProvider
@@ -27,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel->default()->id('admin')->path('admin')->login(Login::class)
             ->theme(Theme::make('workbench')->html(fn (): string => route('workbench.theme')))
             ->resources([PageResource::class])
+            ->pages([PaletteSizes::class])
             ->middleware([
                 EncryptCookies::class, AddQueuedCookiesToResponse::class, StartSession::class,
                 AuthenticateSession::class, ShareErrorsFromSession::class, VerifyCsrfToken::class,

@@ -11,6 +11,9 @@ Palette provides two form components and one infolist component. The two form fi
 
 A row of clickable swatches:
 
+![A ColorPicker field showing six round swatches — indigo, a light green, salmon, a purple-to-pink gradient, white and black — with the indigo swatch selected](assets/color-picker-light.png#gh-light-mode-only)
+![A ColorPicker field showing six round swatches — indigo, a light green, salmon, a purple-to-pink gradient, white and black — with the indigo swatch selected](assets/color-picker-dark.png#gh-dark-mode-only)
+
 ```php
 use Awcodes\Palette\Forms\Components\ColorPicker;
 use Filament\Support\Colors\Color;
@@ -36,6 +39,9 @@ ColorPicker::make('color')
 ## ColorPickerSelect
 
 The same palette as a dropdown, with a swatch rendered beside each option. Useful where a row of swatches would be too wide, or where the palette is long enough that scanning a list is easier.
+
+![An open ColorPickerSelect dropdown listing Badass, Black, Gradient Secondary, Indigo, Salmon and White, each with its swatch, with Gradient Secondary selected](assets/color-picker-select-light.png#gh-light-mode-only)
+![An open ColorPickerSelect dropdown listing Badass, Black, Gradient Secondary, Indigo, Salmon and White, each with its swatch, with Gradient Secondary selected](assets/color-picker-select-dark.png#gh-dark-mode-only)
 
 ```php
 use Awcodes\Palette\Forms\Components\ColorPickerSelect;
@@ -66,6 +72,9 @@ Options are sorted alphabetically by label, regardless of the order you define t
 ## ColorEntry
 
 Renders a stored color as a swatch in an infolist:
+
+![An infolist section with four ColorEntry swatches: indigo, salmon, light green and a purple-to-pink gradient](assets/color-entries-light.png#gh-light-mode-only)
+![An infolist section with four ColorEntry swatches: indigo, salmon, light green and a purple-to-pink gradient](assets/color-entries-dark.png#gh-dark-mode-only)
 
 ```php
 use Awcodes\Palette\Infolists\Components\ColorEntry;
@@ -136,6 +145,9 @@ Available on `ColorPicker` and `ColorEntry`. Accepts `xs`, `sm`, `md`, `lg` or `
 ```php
 ->size('sm'),
 ```
+
+![Five ColorPicker fields with the same palette at sizes xs, sm, md, lg and xl, the swatches growing from small dots to large circles](assets/sizes-light.png#gh-light-mode-only)
+![Five ColorPicker fields with the same palette at sizes xs, sm, md, lg and xl, the swatches growing from small dots to large circles](assets/sizes-dark.png#gh-dark-mode-only)
 
 > [!WARNING]
 > Any other value throws an exception rather than falling back to the default, so avoid computing the size from user input without validating it first.

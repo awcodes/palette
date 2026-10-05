@@ -76,6 +76,9 @@ A field that never calls `storeAsKey()` follows the config value.
 
 ## Reading a stored color
 
+![Four ColorEntry swatches reading the same page: two columns stored as full color arrays and two stored with storeAsKey(), all rendered as swatches](assets/color-entries-light.png#gh-light-mode-only)
+![Four ColorEntry swatches reading the same page: two columns stored as full color arrays and two stored with storeAsKey(), all rendered as swatches](assets/color-entries-dark.png#gh-dark-mode-only)
+
 `ColorEntry` handles both shapes. Given a full array it renders it directly. Given a key, it resolves that key against its own colors — so pass the entry the same palette you gave the field:
 
 ```php
