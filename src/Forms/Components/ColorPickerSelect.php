@@ -6,9 +6,11 @@ namespace Awcodes\Palette\Forms\Components;
 
 use Awcodes\Palette\Forms\Components\Concerns\CanStoreAsKey;
 use Awcodes\Palette\Forms\Components\Concerns\HasColors;
+use Awcodes\Palette\Forms\Components\StateCasts\ColorKeyStateCast;
 use Closure;
 use Exception;
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\StateCasts\Contracts\StateCast;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Blade;
 use JsonException;
@@ -56,6 +58,18 @@ class ColorPickerSelect extends Select
 
                 return $state;
             });
+    }
+
+    /**
+     * @return array<StateCast>
+     */
+    public function getDefaultStateCasts(): array
+    {
+        if ($this->hasCustomStateCasts() || $this->isMultiple()) {
+            return parent::getDefaultStateCasts();
+        }
+
+        return [app(ColorKeyStateCast::class)];
     }
 
     public function getOptions(): array

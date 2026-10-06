@@ -6,7 +6,6 @@ namespace Awcodes\Palette\Forms\Components\Concerns;
 
 use Awcodes\Palette\Facades\Palette;
 use Closure;
-use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
 use Illuminate\Support\Collection;
 
@@ -27,7 +26,7 @@ trait HasColors
     protected ?string $swapBlack = null;
 
     /**
-     * @param  array<Color>|Closure  $colors
+     * @param  array<string, array<int|string, string>|string>|Closure  $colors
      */
     public function colors(array | Closure $colors): static
     {
