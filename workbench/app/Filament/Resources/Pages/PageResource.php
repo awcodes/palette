@@ -34,10 +34,10 @@ class PageResource extends Resource
             TextInput::make('title')->required(),
             self::palette(ColorPicker::make('color'))
                 ->extraFieldWrapperAttributes(['data-focus' => 'color-picker']),
-            self::palette(ColorPickerSelect::make('select_color')),
-            self::palette(ColorPicker::make('color_as_key'))->storeAsKey(),
-            self::palette(ColorPickerSelect::make('select_color_as_key'))->storeAsKey()
+            self::palette(ColorPickerSelect::make('select_color'))
                 ->extraFieldWrapperAttributes(['data-focus' => 'color-picker-select']),
+            self::palette(ColorPicker::make('color_as_key'))->storeAsKey(),
+            self::palette(ColorPickerSelect::make('select_color_as_key'))->storeAsKey(),
         ]);
     }
 
@@ -82,10 +82,8 @@ class PageResource extends Resource
      */
     public static function palette(ColorPicker | ColorPickerSelect | ColorEntry $component): ColorPicker | ColorPickerSelect | ColorEntry
     {
-        // A closure, because colors() documents its array as array<Color>, which rejects the hex and class values
-        // the documentation's palette mixes in. Both forms are evaluated the same way.
         return $component
-            ->colors(fn (): array => [
+            ->colors([
                 'indigo' => Color::Indigo,
                 'badass' => Color::hex('#bada55'),
                 'salmon' => '#fa8072',

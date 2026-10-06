@@ -54,11 +54,15 @@ return ScreenshotSuite::make()
             ->focus('[data-focus="sizes"]')
             ->padding(16),
 
-        // The share-image source, at the card templates' 1400x816 screenshot size. The two-up templates show it
-        // dark in slot 1 and light in slot 2, so it is captured in both themes.
-        Screenshot::make('card-sizes')
+        // The share-image source, at the card templates' 1400x816 screenshot size: the swatch picker and the select
+        // with its dropdown open, on one page. The two-up templates show it dark in slot 1 and light in slot 2, so
+        // it is captured in both themes.
+        Screenshot::make('card-fields')
             ->viewportSize(1400, 816)
-            ->visit('/admin/palette-sizes')
+            ->visit('/admin/palette-fields')
+            ->click('[data-focus="fields"] [aria-controls]')
+            ->waitFor('[data-focus="fields"] [role="listbox"]')
+            ->keepInteractionState()
             ->viewport(),
     ])
     ->cardTemplates('https://github.com/awcodes/focus-templates/tree/v2.1.0/dist')
@@ -67,20 +71,20 @@ return ScreenshotSuite::make()
         Card::make('social')
             ->template('two-up-wide')
             ->title('Palette')
-            ->screenshots(['card-sizes', 'card-sizes'])
+            ->screenshots(['card-fields', 'card-fields'])
             ->sizes([Size::OpenGraph, Size::GitHubSocial]),
 
         // The Filament plugin directory's 2560x1440 thumbnail.
         Card::make('thumbnail')
             ->template('two-up')
             ->title('Palette')
-            ->screenshots(['card-sizes', 'card-sizes'])
+            ->screenshots(['card-fields', 'card-fields'])
             ->sizes([Size::Filament]),
 
         // Unbranded 16:9 image for aw.codes, which adds its own heading: the same screenshots, no text or logo.
         Card::make('plain')
             ->template('two-up-plain')
-            ->screenshots(['card-sizes', 'card-sizes'])
+            ->screenshots(['card-fields', 'card-fields'])
             ->sizes([[2560, 1440]])
             ->scale(1),
     ]);
