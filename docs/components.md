@@ -40,8 +40,8 @@ ColorPicker::make('color')
 
 The same palette as a dropdown, with a swatch rendered beside each option. Useful where a row of swatches would be too wide, or where the palette is long enough that scanning a list is easier.
 
-![An open ColorPickerSelect dropdown listing Badass, Black, Gradient Secondary, Indigo, Salmon and White, each with its swatch, with Gradient Secondary selected](assets/color-picker-select-light.png#gh-light-mode-only)
-![An open ColorPickerSelect dropdown listing Badass, Black, Gradient Secondary, Indigo, Salmon and White, each with its swatch, with Gradient Secondary selected](assets/color-picker-select-dark.png#gh-dark-mode-only)
+![An open ColorPickerSelect dropdown listing Badass, Black, Gradient Secondary, Indigo, Salmon and White, each with its swatch, with Salmon selected](assets/color-picker-select-light.png#gh-light-mode-only)
+![An open ColorPickerSelect dropdown listing Badass, Black, Gradient Secondary, Indigo, Salmon and White, each with its swatch, with Salmon selected](assets/color-picker-select-dark.png#gh-dark-mode-only)
 
 ```php
 use Awcodes\Palette\Forms\Components\ColorPickerSelect;

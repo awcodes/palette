@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Awcodes\Palette\Facades\Palette;
 use Awcodes\Palette\Forms\Components\ColorPickerSelect;
+use Awcodes\Palette\Tests\Fixtures\TestEditSelectComponent;
 use Awcodes\Palette\Tests\Fixtures\TestForm;
 use Awcodes\Palette\Tests\Fixtures\TestSelectComponent;
 use Filament\Schemas\Schema;
@@ -121,4 +122,29 @@ it('can update correct data', function () {
     expect($page->refresh())
         ->select_color->toBe(Palette::buildColor('salmon', '#fa8072', [], []))
         ->select_color_as_key->toBe('badass');
+});
+
+it('loads a stored colour array as its key', function () {
+    Page::factory()->create([
+        'select_color' => Palette::buildColor('salmon', '#fa8072', [], []),
+        'select_color_as_key' => 'badass',
+    ]);
+
+    livewire(TestEditSelectComponent::class)
+        ->assertSchemaStateSet([
+            'select_color' => 'salmon',
+            'select_color_as_key' => 'badass',
+        ]);
+});
+
+it('keeps a stored colour array when saving without changes', function () {
+    $page = Page::factory()->create([
+        'select_color' => Palette::buildColor('salmon', '#fa8072', [], []),
+    ]);
+
+    livewire(TestEditSelectComponent::class)
+        ->call('update')
+        ->assertHasNoFormErrors();
+
+    expect($page->refresh()->select_color)->toBe(Palette::buildColor('salmon', '#fa8072', [], []));
 });
